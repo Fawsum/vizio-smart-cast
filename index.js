@@ -605,7 +605,7 @@ SMARTCAST.discover = (success, error, timeout) => {
     }
 
     let ssdp = require('node-ssdp').Client,
-        client = new ssdp();
+        client = new ssdp({ 'explicitSocketBind': true });
 
         client.on('response', (headers, statusCode, info) => {
             request.get(headers.LOCATION).then((description) => {
